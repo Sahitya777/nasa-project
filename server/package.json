@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
+    "watch":"nodemon src/server.js",
     "start": "nodemon src/server.js",
     "cluster": "pm2 start src/server.js -i max"
   },
