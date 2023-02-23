@@ -1,11 +1,13 @@
 const requet=require('supertest')
-const app=require('../../app')
+const app=require('../../app');
+const { loadLaunchesData } = require('../../models/launches.model');
 const {mongoConnect,mongoDisconnect} =require('../../services/mongo');
 
 
 describe('Launches API',()=>{
     beforeAll(async()=>{
         await mongoConnect();
+        await loadLaunchesData();
     });
     afterAll(async()=>{
         await mongoDisconnect();
