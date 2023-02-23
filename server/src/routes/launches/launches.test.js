@@ -8,7 +8,7 @@ describe('Launches API',()=>{
     beforeAll(async()=>{
         await mongoConnect();
         await loadLaunchesData();
-    });
+    },30000);
     afterAll(async()=>{
         await mongoDisconnect();
     })
