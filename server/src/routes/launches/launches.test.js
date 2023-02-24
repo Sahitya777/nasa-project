@@ -2,22 +2,24 @@ const requet=require('supertest')
 const app=require('../../app');
 const { loadLaunchesData } = require('../../models/launches.model');
 const {mongoConnect,mongoDisconnect} =require('../../services/mongo');
-
+jest.setTimeout(30000);
 
 describe('Launches API',()=>{
     beforeAll(async()=>{
         await mongoConnect();
         await loadLaunchesData();
+        jest.setTimeout(30000);
     },30000);
     afterAll(async()=>{
         await mongoDisconnect();
+        jest.setTimeout(30000);
     })
     describe('test GET/launches',()=>{
         test('It should respond with 200 success',async ()=>{
             const response=await requet(app).get('/launches');
             expect(response.statusCode).toBe(200);
         });
-    })
+    },30000)
     
     describe('Test POST/launch',()=>{
         test('It should response with 200 success',async()=>{
@@ -39,5 +41,5 @@ describe('Launches API',()=>{
         });
         test('It should catch missing required properties',()=>{})
         test('It should catch invalid dates',()=>{})
-    })
+    },30000)
 })
